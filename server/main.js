@@ -1,12 +1,18 @@
-var express = require('express');
+var express = require("express");
 var app = express();
-var server = require('http').Server(app);
+var server = require("http").Server(app);
 var port = 80;
+var io = require("socket.io")(server);
 
-app.get('/', function(req, res) 
-{
-    res.send("Hello world");
-    console.log("connected.");
+app.get("/", function (req, res) {
+    var date = new Date();
+    res.send("Hello at " + date.toISOString());
+    console.log("connected to express.");
+});
+
+io.on("connection", function (socket) {
+    console.log("connected to socket.");
+    socket.emit("messages", ["Hello", "Hi there", "How are you?", "Todd Starnes is a fat fuck"])
 });
 
 console.log("listen on port " + port);
