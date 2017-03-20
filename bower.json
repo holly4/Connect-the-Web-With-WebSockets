@@ -1,6 +1,6 @@
 {
   "name": "ctwwws",
-  "description": "",
+  "description": "Connect the Web With WebSockets(tutsplus)",
   "main": "index.js",
   "authors": [
     "Holly <hollies@hollies.pw>"
