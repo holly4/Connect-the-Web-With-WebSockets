@@ -39,7 +39,12 @@ app.use(express.static('app'));
 
 io.on("connection", function (socket) {
     console.log("connected to socket.io.");
-    socket.emit("messages", messages)
+    socket.emit("messages", messages);
+    socket.on("new-message", function(data){
+        console.log("new-message");
+        messages.push(data);
+        io.sockets.emit("messages", messages);        
+    });
 });
 
 console.log("listen on port " + port);
