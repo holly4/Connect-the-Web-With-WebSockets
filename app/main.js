@@ -40,6 +40,7 @@ function render() {
 /* exported addMessage */
 function addMessage() {
     var payload = {
+        messageId: randomId(),
         userName: document.getElementById("username").value,
         content: {
             text: document.getElementById("message").value,
