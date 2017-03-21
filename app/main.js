@@ -1,5 +1,13 @@
 "use strict";
 
+var userId = localStorage.getItem("userId") || randomId();
+localStorage.setItem("userId", userId);
+console.info("User id: " + userId);
+
+function randomId() {
+    return Math.floor(Math.random() * 1e11);
+}
+
 var socket = io.connect("http://localhost", {
     "forceNew": true
 });
