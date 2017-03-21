@@ -8,6 +8,7 @@
         "no-console":0
    },
    "globals": {
-        "io": false
+        "io": false,
+        "moment": false
    }
 }

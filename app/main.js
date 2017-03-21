@@ -20,7 +20,9 @@ socket.on("messages", function (data) {
 });
 
 function render() {
-    var html = messageCache.map(function (msg, index) {
+    var html = messageCache.sort(function(a, b){
+        return a.ts - b.ts;
+    }).map(function (msg, index) {
         return (`
             <form class="message" onsubmit="return likeMessage(messageCache[${index}])">
                 <div class="name">
@@ -29,6 +31,7 @@ function render() {
                 <!-- target=_blank => open in new window -->
                 <a href=${msg.content.link} class="message" target=_blank>
                     ${msg.content.text}</a>
+                <div class="time">${moment(msg.ts).fromNow()}</div>
                 <input type="submit"  class="likes-count" value="${msg.likedBy.length}  Likes"></input>
             </form>
         `);

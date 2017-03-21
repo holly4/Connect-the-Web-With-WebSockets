@@ -36,6 +36,7 @@ var messages = [{
 }];
 
 app.use(express.static('app'));
+app.use('/bower_components', express.static('bower_components'));
 
 io.on("connection", function (socket) {
     console.log("connected to socket.io.");
