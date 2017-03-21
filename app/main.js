@@ -7,12 +7,13 @@ socket.on("messages", function (data) {
     console.info(data);
     var html = data.map(function(d){
         return (`
-            <div class='name'>
+            <div class="name">
                 ${d.userName}
             </div>
             <!-- target=_blank => open in new window -->
-            <a href=${d.content.link} class='message' target=_blank>
+            <a href=${d.content.link} class="message" target=_blank>
                 ${d.content.text}</a>
+            <input type="submit"  class="likes-count" value="${d.likedBy.length}  Likes"></input>
         `);
     }).join(" ");
 
@@ -28,6 +29,7 @@ function addMessage() {
             text : document.getElementById("message").value, 
             link : document.getElementById("linkAddress").value
         },
+        likedBy:[],
         ts: Date.now()
     }
     console.log("addMessage");
